@@ -34,6 +34,20 @@ module.exports = {
 		return response.json({ id });
 	},
 
+	async update(request, response) {
+
+		const { id } = request.params;
+		const { title, description, value } = request.body;
+
+		await connection('incidents').where('id', id).update({
+			title,
+			description,
+			value,
+		});
+
+		return response.status(204).send();
+	},
+
 	async delete(request, response) {
 
 		const { id } = request.params;
