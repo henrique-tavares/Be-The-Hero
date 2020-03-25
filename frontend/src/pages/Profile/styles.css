@@ -58,7 +58,16 @@
 	position: relative;
 }
 
-.profile-container ul li button {
+.profile-container ul li button#edit {
+	position: absolute;
+	right: 54px;
+	top: 24px;
+	border: 0;
+	background: transparent;
+	transition: opacity 0.2s;
+}
+
+.profile-container ul li button#delete {
 	position: absolute;
 	right: 24px;
 	top: 24px;

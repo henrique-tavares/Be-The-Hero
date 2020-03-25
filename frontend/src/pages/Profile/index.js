@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { FiPower, FiTrash2, FiEdit } from 'react-icons/fi'
 
 import api from '../../services/api';
 
@@ -42,6 +42,16 @@ export default function Profile() {
 		}
 	}
 
+	async function startUpdateIncident(id, title, description, value) {
+
+		localStorage.setItem('incidentId', id);
+		localStorage.setItem('incidentTitle', title);
+		localStorage.setItem('incidentDescription', description);
+		localStorage.setItem('incidentValue', value);
+
+		history.push('/incidents/update');
+	}
+
 	function handleLogout() {
 		localStorage.clear();
 		
@@ -74,7 +84,11 @@ export default function Profile() {
 						<strong>VALOR:</strong>
 						<p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}</p>
 
-						<button onClick={() => handleDeleteIncident(incident.id)}>
+						<button id="edit" onClick={() => startUpdateIncident(incident.id, incident.title, incident.description, incident.value)}>
+							<FiEdit size={20} color="#a8a8b3" />
+						</button>
+
+						<button id="delete" onClick={() => handleDeleteIncident(incident.id)}>
 							<FiTrash2 size={20} color="#a8a8b3" />
 						</button>
 					</li>
