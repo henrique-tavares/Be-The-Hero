@@ -18,7 +18,7 @@ export default function Profile() {
 	const [incidents, setIncidents] = useState([]);
 
 	useEffect(() => {
-		api.get('profile', {
+		api.get(`${ongId}/incidents`, {
 			headers: {
 				Authorization: ongId,
 			}
@@ -49,7 +49,7 @@ export default function Profile() {
 		localStorage.setItem('incidentDescription', description);
 		localStorage.setItem('incidentValue', value);
 
-		history.push('/incidents/update');
+		history.push(`/${ongId}/incidents/update`);
 	}
 
 	function handleLogout() {
@@ -64,7 +64,7 @@ export default function Profile() {
 				<img src={logoImg} alt="Be The Hero"/>
 				<span>Bem vinda, {ongName}</span>
 
-				<Link className="button" to="/incidents/new" >Cadastrar novo caso</Link>
+				<Link className="button" to={`/${ongId}/incidents/new`} >Cadastrar novo caso</Link>
 				<button type="button" onClick={handleLogout}>
 					<FiPower size={18} color="#e02041" />
 				</button>

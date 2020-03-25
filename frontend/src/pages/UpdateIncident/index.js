@@ -13,8 +13,9 @@ export default function UpdateIncident() {
 	const [title, setTitle] = useState(localStorage.getItem('incidentTitle'));
 	const [description, setDescription] = useState(localStorage.getItem('incidentDescription'));
 	const [value, setValue] = useState(localStorage.getItem('incidentValue'));
-
 	const id = localStorage.getItem('incidentId');
+
+	const ongId = localStorage.getItem('ongId')
 
 	const history = useHistory();
 
@@ -35,7 +36,7 @@ export default function UpdateIncident() {
 		}
 
 		try {
-			await api.put(`/incidents/${id}`, data);
+			await api.put(`incidents/${id}`, data);
 
 		} catch (err) {
 			alert('Erro ao alterar caso, tente novamente.');
@@ -43,7 +44,7 @@ export default function UpdateIncident() {
 		
 		clearStorage();
 
-		history.push('/profile');
+		history.push(`/${ongId}/incidents`);
 	}
 
 	return (
@@ -56,7 +57,7 @@ export default function UpdateIncident() {
 
 					<p>Altere o caso conforme desejar.</p>
 
-					<Link className="link" to="/profile" onClick={clearStorage}>
+					<Link className="link" to={`/${ongId}/incidents`} onClick={clearStorage}>
 						<FiArrowLeft size={16} color="#E02041" />
 						Voltar para home
 					</Link>
