@@ -34,7 +34,7 @@ export default function NewIncident() {
 				}
 			});
 
-			history.push(`/${ongId}/incidents`);
+			history.push(`/home`);
 
 		} catch (err) {
 			alert('Erro ao cadastrar um novo caso, tente novamente')
@@ -51,7 +51,7 @@ export default function NewIncident() {
 
 					<p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
 
-					<Link className="link" to={`/${ongId}/incidents`}>
+					<Link className="link" to={`/home`}>
 						<FiArrowLeft size={16} color="#E02041" />
 						Voltar para home
 					</Link>

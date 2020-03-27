@@ -14,9 +14,9 @@ export default function Routes() {
 				<Route path='/' exact component={Logon} />
 				<Route path='/register' component={Register} />
 
-				<Route path='/:ongId/incidents' exact component={Home} />
-				<Route path='/:ongId/incidents/new' exact component={NewIncident} />
-				<Route path='/:ongId/incidents/update' exact component={UpdateIncident} />
+				<Route path='/home' exact component={Home} />
+				<Route path='/home/incidents/new' exact component={NewIncident} />
+				<Route path='/home/incidents/update' exact component={UpdateIncident} />
 			</Switch>
 		</BrowserRouter>
 	);

@@ -24,7 +24,7 @@ export default function Logon() {
 			localStorage.setItem('ongId', id);
 			localStorage.setItem('ongName', response.data.name);
 
-			history.push(`/${id}/incidents`);
+			history.push(`/home`);
 			
 		} catch (err) {
 			alert('Falha no logon, tente novamente');

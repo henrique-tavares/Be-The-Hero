@@ -8,7 +8,7 @@ import './styles.css'
 
 import logoImg from '../../assets/logo.svg';
 
-export default function Profile() {
+export default function Home() {
 
 	const history = useHistory();
 
@@ -18,7 +18,7 @@ export default function Profile() {
 	const [incidents, setIncidents] = useState([]);
 
 	useEffect(() => {
-		api.get(`${ongId}/incidents`, {
+		api.get(`/home`, {
 			headers: {
 				Authorization: ongId,
 			}
@@ -49,12 +49,12 @@ export default function Profile() {
 		localStorage.setItem('incidentDescription', description);
 		localStorage.setItem('incidentValue', value);
 
-		history.push(`/${ongId}/incidents/update`);
+		history.push(`/home/incidents/update`);
 	}
 
 	function handleLogout() {
 		localStorage.clear();
-		
+
 		history.push('/');
 	}
 
@@ -64,7 +64,7 @@ export default function Profile() {
 				<img src={logoImg} alt="Be The Hero"/>
 				<span>Bem vinda, {ongName}</span>
 
-				<Link className="button" to={`/${ongId}/incidents/new`} >Cadastrar novo caso</Link>
+				<Link className="button" to={'/home/incidents/new'} >Cadastrar novo caso</Link>
 				<button type="button" onClick={handleLogout}>
 					<FiPower size={18} color="#e02041" />
 				</button>

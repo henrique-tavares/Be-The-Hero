@@ -36,7 +36,11 @@ export default function UpdateIncident() {
 		}
 
 		try {
-			await api.put(`incidents/${id}`, data);
+			await api.put(`incidents/${id}`, data, {
+				headers: {
+					authorization: ongId
+				}
+			});
 
 		} catch (err) {
 			alert('Erro ao alterar caso, tente novamente.');
@@ -44,7 +48,7 @@ export default function UpdateIncident() {
 		
 		clearStorage();
 
-		history.push(`/${ongId}/incidents`);
+		history.push(`/home`);
 	}
 
 	return (
@@ -57,7 +61,7 @@ export default function UpdateIncident() {
 
 					<p>Altere o caso conforme desejar.</p>
 
-					<Link className="link" to={`/${ongId}/incidents`} onClick={clearStorage}>
+					<Link className="link" to={`/home`} onClick={clearStorage}>
 						<FiArrowLeft size={16} color="#E02041" />
 						Voltar para home
 					</Link>
